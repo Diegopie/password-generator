@@ -8,15 +8,15 @@ const specChar = ['!', '#', '$', '%', '&', '*', '=', '+', '-', '/', ':', ';', '<
 const numbChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9']; //length is 9
 const lowerCase = ['a', 'b',' c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k' , 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; //length is 26
 const upperCase = ['A', 'B',' C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K' , 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']; //length is 26
-var userChoices = [specChar, numbChar, lowerCase, upperCase]
+var userChoices = [specChar, numbChar, lowerCase, upperCase];
 
-console.log(userChoices)
+console.log('user choices array' + userChoices);
 
- 
+ console.log(userChoices[0][14])
 
 // Store User Variables in an array
   
-var userSelection = [];
+var userSelection = []; //could i create variables that convert a true into 
   
 
 function generatePassword () {
@@ -32,7 +32,7 @@ function generatePassword () {
     alert("You must choose a number between 8 - 128. Please try again.")
 
   } else if (userLength >= 8 && userLength <= 128) {
-      console.log(parseInt(userLength));
+      console.log('userLength' + parseInt(userLength));
       //Log user selection to userSelection
       userSelection.push(parseInt(userLength));
 
@@ -60,11 +60,34 @@ function generatePassword () {
 
 
   console.log("-----------------");
-  console.log(userSelection);
+  console.log('userSelectionuser Array' + Selection);
 
 // Combine user selections to generate the password 
    
+var pass = '';
+var index = 0;
+for (i = 0; pass.length < userLength; i++) {
+  if (inclSpec && inclNumb) {
+    // Create a random index #, so that the order of the password is also random??
 
+    var arrayNumb = Math.floor(Math.random() * userChoices.length);
+    console.log('array number ' + arrayNumb)
+    //create a random index number to get an element from the array
+    var indexNumb = Math.floor(Math.random() * userChoices[arrayNumb].length);
+    console.log('index number' + indexNumb)
+    console.log('this should be the array item ' + userChoices[arrayNumb][indexNumb])
+    pass += userChoices[arrayNumb][indexNumb];
+    
+//     console.log("pass string length" + pass.length)  
+//     console.log('pass type' + typeof pass.length) 
+// } else if (inclNumb) {
+//     var numbNum = Math.floor(Math.random() * numbChar.length);
+//     console.log("RNG " + numbNum)
+//       console.log("random numbIndex value " + numbChar[numbNum]);
+//     pass += numbChar[numbNum];
+
+  }
+}
 
 
 
@@ -76,25 +99,25 @@ function generatePassword () {
 
 // 2nd draft of creating random password with two variables
 
-  var pass = '';
-  for (i = 0; pass.length < userLength; i++) {
-    if (inclSpec && inclNumb) {
-      var specNum = Math.floor(Math.random() * specChar.length);
-        console.log("random specIndex value " + specChar[specNum]);
-      var numbNum = Math.floor(Math.random() * numbChar.length);
-        console.log("random specIndex value " + numbChar[numbNum]);
-      pass += specChar[specNum];
-      pass += numbChar[numbNum];
-      console.log("pass string length" + pass.length)  
-      console.log('pass type' + typeof pass.length) 
-  } else if (inclNumb) {
-      var numbNum = Math.floor(Math.random() * numbChar.length);
-      console.log("RNG " + numbNum)
-        console.log("random numbIndex value " + numbChar[numbNum]);
-      pass += numbChar[numbNum];
+  // var pass = '';
+  // for (i = 0; pass.length < userLength; i++) {
+  //   if (inclSpec && inclNumb) {
+  //     var specNum = Math.floor(Math.random() * specChar.length);
+  //       console.log("random specIndex value " + specChar[specNum]);
+  //     var numbNum = Math.floor(Math.random() * numbChar.length);
+  //       console.log("random specIndex value " + numbChar[numbNum]);
+  //     pass += specChar[specNum];
+  //     pass += numbChar[numbNum];
+  //     console.log("pass string length" + pass.length)  
+  //     console.log('pass type' + typeof pass.length) 
+  // } else if (inclNumb) {
+  //     var numbNum = Math.floor(Math.random() * numbChar.length);
+  //     console.log("RNG " + numbNum)
+  //       console.log("random numbIndex value " + numbChar[numbNum]);
+  //     pass += numbChar[numbNum];
   
       
-  }
+  // }
 
 
 
@@ -112,7 +135,7 @@ function generatePassword () {
     
 
 
-  }
+  // }
 
 
   //Math.floor(Math.random() * (max - min)) + min
