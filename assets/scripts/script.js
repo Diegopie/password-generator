@@ -4,9 +4,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Array for User Choices
 let specChar = '!#$%&*=+-/:;<>?@[]^_`{}~'; //length is 24
-let numbChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9']; //length is 9
-let lowerCase = ['a', 'b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; //length is 26
-let upperCase = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']; //length is 26
+let numbChar = ['123456789']; //length is 9
+let lowerCase = ['abcdefghijklmnopqrstuvwxyz']; //length is 26
+let upperCase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']; //length is 26
 // this array holds User Choises Arrays so that an RNG system can access every arrray at random and every array element at random
 var userChoices = [specChar, numbChar, lowerCase, upperCase];
 
@@ -65,6 +65,7 @@ function generatePassword () {
       // If user selected true, send this array to the userArray string
       if (incUpper) {
         userArray += upperCase
+        console.log('4th conditional userArray: ' + userArray)
       }
       
 
@@ -79,28 +80,27 @@ function generatePassword () {
 var pass = "";
 
 // Run a function, based on the values created by the user 
-function genPass (spec, numb, upper, lower) {
+function genPass () {
   for (i = 0; pass.length < userLength; i++) {
-    console.log('Acess dynamic userSelection: ' + userSelection[0], userSelection[1], userSelection[2], userSelection[3])
-    if (userSelection[0] && userSelection[1] && userSelection[2] && userSelection[3]) {
+    
+    
       // Create a random index #, so that the order of the password is also random??
 
-      var arrayNumb = Math.floor(Math.random() * userChoices.length);
-      console.log('arrayNumber: ' + arrayNumb);
-        console.log('-----------------------------');
+  
       //create a random index number to get an element from the array
-      var indexNumb = Math.floor(Math.random() * userChoices[arrayNumb].length);
+      console.log(userArray.length)
+      var indexNumb = Math.floor(Math.random() * userArray.length);
       console.log('indexNumber: ' + indexNumb);
         console.log('-----------------------------');
-      console.log('array item: ' + userChoices[arrayNumb][indexNumb]);
+        console.log('show index element: ' + userArray[indexNumb])
         console.log('-----------------------------');
-      pass += userChoices[arrayNumb][indexNumb];
+      pass += userArray[indexNumb];
       console.log('show current pass: ' + pass);
-    }      
+         
   }
 }
 
-genPass(userSelection[0], userSelection[1], userSelection[2], userSelection[3]); 
+genPass(); 
 
 
 
