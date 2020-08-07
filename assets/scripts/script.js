@@ -26,7 +26,7 @@ function generatePassword () {
   // Ask length of characters from user
   var userLength = prompt('Please type a number for the length of your password, between 8 - 128');
   
-      console.log('---Conditional: User prompts and confirms---');
+      // console.log('---Conditional: User prompts and confirms---');  //pg break
   //Conditional to check if length is correct
   if (userLength < 8 || userLength > 128) {
     alert("You must choose a number between 8 - 128. Please try again.");
@@ -34,52 +34,52 @@ function generatePassword () {
     return pass;
     // If correct, get the rest of their choices and log conditions from user
   } else if (userLength >= 8 && userLength <= 128) {
-          console.log('userLength: ' + parseInt(userLength));
+          // console.log('userLength: ' + parseInt(userLength));  //view user value
     //Display rules to the user
     alert("Please select at least two character types. Your options will be special character, numbers, lowercase, and uppercase");     
     // Ask user to include special characters:
     var inclSpec = confirm('Would you like to include special characters? (Okay/Yes | Cancel/No)');
-          console.log("incSpec: " + inclSpec);
+          // console.log("incSpec: " + inclSpec);  //View boolean value
       // If user selected true, send this array to the userChar string
       if (inclSpec) {
         userChar += specChar;
-          console.log('1st conditional userChar: ' + userChar);
+          // console.log('1st conditional userChar: ' + userChar);  //View dynamic userChar string
         reqCharCount++;
-          console.log('1st reqCharCount: ' + reqCharCount);
+          // console.log('1st reqCharCount: ' + reqCharCount);  //View current reCharCount
       }
     // Ask user to include numbers:
     var inclNumb = confirm('Would you like to include numbers? (Okay/Yes | Cancel/No)');
-          console.log("incNumb: " + inclNumb);
+          // console.log("incNumb: " + inclNumb);//View boolean value
       // If user selected true, send this array to the userChar string
       if (inclNumb) {
         userChar += numbChar;
-          console.log('2nd conditional userChar: ' + userChar);
+          // console.log('2nd conditional userChar: ' + userChar);  //View dynamic userChar string
         reqCharCount++;
-          console.log('2nd reqCharCount: ' + reqCharCount);
+          // console.log('2nd reqCharCount: ' + reqCharCount);  //View current reCharCount
       }
     // Ask user to include lower case?
     var inclLower = confirm('Would you like to include lower-case letters? (Okay/Yes | Cancel/No)');
-          console.log("incLower: " + inclLower);
+          // console.log("incLower: " + inclLower);//View boolean value
       // If user selected true, send this array to the userChar string
       if (inclLower) {
         userChar += lowerCase;
-          console.log('3rd conditional userChar: ' + userChar);
+          // console.log('3rd conditional userChar: ' + userChar);  //View dynamic userChar string
         reqCharCount++;
-          console.log('3rd reqCharCount: ' + reqCharCount);
+          // console.log('3rd reqCharCount: ' + reqCharCount);  //View current reCharCount
       }    
     // Ask user to include Upper case?
     var incUpper = confirm('Would you like to include Upper-case letters? (Okay/Yes | Cancel/No)');
-          console.log("incUpper: " + incUpper);
+          // console.log("incUpper: " + incUpper);//View boolean value
       // If user selected true, send this array to the userChar string
       if (incUpper) {
         userChar += upperCase;
-          console.log('4th conditional userChar: ' + userChar);
+          // console.log('4th conditional userChar: ' + userChar);  //View dynamic userChar string
         reqCharCount++;
-          console.log('4th reqCharCount: ' + reqCharCount);
+          // console.log('4th reqCharCount: ' + reqCharCount);  //View current reCharCount
       }
     
-      console.log('final reqCharCount: ' + reqCharCount);
-    console.log("---Conditional to check reqCharCount---");
+      // console.log('final reqCharCount: ' + reqCharCount);  //View total reCharCount
+    // console.log("---Conditional to check reqCharCount---");  //pg break
     
     //This conditional will check if user selected enough character types
     if (reqCharCount < 2) {
@@ -87,19 +87,19 @@ function generatePassword () {
       pass = 'Click \'Generate Password\' to get started!';
       return pass;
     } else {
-    console.log('---Function to genarate random password---');
+    // console.log('---Function to genarate random password---');  //pg break
     // Run a function to randomly get an index value to correlate with the dynamic userChar string, than attach each string to var pass
     function genPass () {
       // Create a loop that stops when pass.length === userLength
       for (;pass.length < userLength;) {
         //create a random index number to get an element from dynamic userChar
         var indexNumb = Math.floor(Math.random() * userChar.length);
-          console.log('indexNumber: ' + indexNumb); //review the rng index value
-          console.log('------');
-          console.log('show index element: ' + userChar[indexNumb]) //view the correlating index element
-          console.log('------');
+          // console.log('indexNumber: ' + indexNumb);  //review the rng index value
+          // console.log('------');  //pg break
+          // console.log('show index element: ' + userChar[indexNumb])  //view the correlating index element
+          // console.log('------');  //pg break
         pass += userChar[indexNumb];
-          console.log('show current pass: ' + pass); //view the current string of pass
+          // console.log('show current pass: ' + pass);  //view the current string of pass
       }
     }
     genPass(); 
@@ -117,3 +117,12 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
+function copy() {
+      // console.log('---copy Function---');  //pg break
+  var copyText = document.querySelector('textarea');
+  copyText.select();
+  document.execCommand("copy");
+}
+
+document.querySelector('#copy').addEventListener('click', copy);
