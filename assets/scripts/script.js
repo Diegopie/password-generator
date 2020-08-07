@@ -30,7 +30,7 @@ function generatePassword () {
   //Conditional to check if length is correct
   if (userLength < 8 || userLength > 128) {
     alert("You must choose a number between 8 - 128. Please try again.");
-    pass = 'Click \'Generate Password\' to get started!';
+    pass = 'Click \'Generate Password\' below to get started!';
     return pass;
     // If correct, get the rest of their choices and log conditions from user
   } else if (userLength >= 8 && userLength <= 128) {
@@ -84,7 +84,7 @@ function generatePassword () {
     //This conditional will check if user selected enough character types
     if (reqCharCount < 2) {
       alert("You must choose at least two character types. Please try again.");
-      pass = 'Click \'Generate Password\' to get started!';
+      pass = 'Click \'Generate Password\' below to get started!';
       return pass;
     } else {
     // console.log('---Function to genarate random password---');  //pg break
