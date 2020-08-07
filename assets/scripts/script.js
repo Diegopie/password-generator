@@ -7,177 +7,113 @@ let specChar = '!#$%&*=+-/:;<>?@[]^_`{}~'; //length is 24
 let numbChar = ['123456789']; //length is 9
 let lowerCase = ['abcdefghijklmnopqrstuvwxyz']; //length is 26
 let upperCase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']; //length is 26
-// this array holds User Choises Arrays so that an RNG system can access every arrray at random and every array element at random
-var userChoices = [specChar, numbChar, lowerCase, upperCase];
 
-console.log('user choices array: ' + userChoices);
 
-// Store User Selected boolian values in an array, userArray will then have user true statements stored in here for the genPass() to use
-var userSelection = []; 
-var userArray = ''; //store their selected options in a new array?
-console.log('blank userarry' + userArray)
+// Declare blank, dynamic string that will be populated by user choices
+var userChar = '';
+// Declare var to track if user has selected enough choices
+var reqCharCount = 0;
+// Declare var to be used to generate and display password
+var pass = "";
 
 //Get conditions from user
 function generatePassword () {
+  // These reset var back to default if the user does not reload the page to generate a new password
+  userChar = '';
+  reqCharCount = 0;
+  pass = ""
+
   // Ask length of characters from user
-  var userLength = prompt('Please choose the length of your password, between 8 - 128 characters');
+  var userLength = prompt('Please type a number for the length of your password, between 8 - 128');
+  
+      console.log('---Conditional: User prompts and confirms---');
   //Conditional to check if length is correct
   if (userLength < 8 || userLength > 128) {
-    alert("You must choose a number between 8 - 128. Please try again.")
+    alert("You must choose a number between 8 - 128. Please try again.");
+    pass = 'Click \'Generate Password\' to get started!';
+    return pass;
     // If correct, get the rest of their choices and log conditions from user
   } else if (userLength >= 8 && userLength <= 128) {
           console.log('userLength: ' + parseInt(userLength));
+    //Display rules to the user
+    alert("Please select at least two character types. Your options will be special character, numbers, lowercase, and uppercase");     
     // Ask user to include special characters:
-    var inclSpec = confirm('Would you like to include special characters?');
+    var inclSpec = confirm('Would you like to include special characters? (Okay/Yes | Cancel/No)');
           console.log("incSpec: " + inclSpec);
-      //Log user selection to userSelection
-      userSelection.push(inclSpec);
-      // If user selected true, send this array to the userArray string
+      // If user selected true, send this array to the userChar string
       if (inclSpec) {
-        userArray += specChar
+        userChar += specChar;
+          console.log('1st conditional userChar: ' + userChar);
+        reqCharCount++;
+          console.log('1st reqCharCount: ' + reqCharCount);
       }
-          console.log('1st conditional userArray: ' + userArray)
     // Ask user to include numbers:
-    var inclNumb = confirm('Would you like to include numbers?');
+    var inclNumb = confirm('Would you like to include numbers? (Okay/Yes | Cancel/No)');
           console.log("incNumb: " + inclNumb);
-      //Log user selection to userSelection
-      userSelection.push(inclNumb);
-      // If user selected true, send this array to the userArray string
+      // If user selected true, send this array to the userChar string
       if (inclNumb) {
-        userArray += numbChar
+        userChar += numbChar;
+          console.log('2nd conditional userChar: ' + userChar);
+        reqCharCount++;
+          console.log('2nd reqCharCount: ' + reqCharCount);
       }
-          console.log('2st conditional userArray: ' + userArray)
     // Ask user to include lower case?
-    var inclLower = confirm('Would you like to include lower-case letters?');
+    var inclLower = confirm('Would you like to include lower-case letters? (Okay/Yes | Cancel/No)');
           console.log("incLower: " + inclLower);
-      //Log user selection to userSelection
-      userSelection.push(inclLower);
-      // If user selected true, send this array to the userArray string
+      // If user selected true, send this array to the userChar string
       if (inclLower) {
-        userArray += lowerCase
-      }
-          console.log('3rd conditional userArray: ' + userArray)
+        userChar += lowerCase;
+          console.log('3rd conditional userChar: ' + userChar);
+        reqCharCount++;
+          console.log('3rd reqCharCount: ' + reqCharCount);
+      }    
     // Ask user to include Upper case?
-    var incUpper = confirm('Would you like to include Upper-case letters?');
+    var incUpper = confirm('Would you like to include Upper-case letters? (Okay/Yes | Cancel/No)');
           console.log("incUpper: " + incUpper);
-      //Log user selection to userSelection
-      userSelection.push(incUpper);
-      // If user selected true, send this array to the userArray string
+      // If user selected true, send this array to the userChar string
       if (incUpper) {
-        userArray += upperCase
-        console.log('4th conditional userArray: ' + userArray)
+        userChar += upperCase;
+          console.log('4th conditional userChar: ' + userChar);
+        reqCharCount++;
+          console.log('4th reqCharCount: ' + reqCharCount);
       }
-      
-
-    console.log('userSelection Array: ' + userSelection); //monitor user selection
-  }
-
-
-  console.log('This is the final user array: ' + userArray)
-  console.log("-----------------");
-
-// Declair var to be used to generate and display password
-var pass = "";
-
-// Run a function, based on the values created by the user 
-function genPass () {
-  for (i = 0; pass.length < userLength; i++) {
     
+      console.log('final reqCharCount: ' + reqCharCount);
+    console.log("---Conditional to check reqCharCount---");
     
-      // Create a random index #, so that the order of the password is also random??
-
-  
-      //create a random index number to get an element from the array
-      console.log(userArray.length)
-      var indexNumb = Math.floor(Math.random() * userArray.length);
-      console.log('indexNumber: ' + indexNumb);
-        console.log('-----------------------------');
-        console.log('show index element: ' + userArray[indexNumb])
-        console.log('-----------------------------');
-      pass += userArray[indexNumb];
-      console.log('show current pass: ' + pass);
-         
+    //This conditional will check if user selected enough character types
+    if (reqCharCount < 2) {
+      alert("You must choose at least two character types. Please try again.");
+      pass = 'Click \'Generate Password\' to get started!';
+      return pass;
+    } else {
+    console.log('---Function to genarate random password---');
+    // Run a function to randomly get an index value to correlate with the dynamic userChar string, than attach each string to var pass
+    function genPass () {
+      // Create a loop that stops when pass.length === userLength
+      for (;pass.length < userLength;) {
+        //create a random index number to get an element from dynamic userChar
+        var indexNumb = Math.floor(Math.random() * userChar.length);
+          console.log('indexNumber: ' + indexNumb); //review the rng index value
+          console.log('------');
+          console.log('show index element: ' + userChar[indexNumb]) //view the correlating index element
+          console.log('------');
+        pass += userChar[indexNumb];
+          console.log('show current pass: ' + pass); //view the current string of pass
+      }
+    }
+    genPass(); 
+    return pass
+    }
   }
 }
-
-genPass(); 
-
-
-
-
-
-
-
-
-
-
-// 2nd draft of creating random password with two variables
-
-  // var pass = '';
-  // for (i = 0; pass.length < userLength; i++) {
-  //   if (inclSpec && inclNumb) {
-  //     var specNum = Math.floor(Math.random() * specChar.length);
-  //       console.log("random specIndex value " + specChar[specNum]);
-  //     var numbNum = Math.floor(Math.random() * numbChar.length);
-  //       console.log("random specIndex value " + numbChar[numbNum]);
-  //     pass += specChar[specNum];
-  //     pass += numbChar[numbNum];
-  //     console.log("pass string length" + pass.length)  
-  //     console.log('pass type' + typeof pass.length) 
-  // } else if (inclNumb) {
-  //     var numbNum = Math.floor(Math.random() * numbChar.length);
-  //     console.log("RNG " + numbNum)
-  //       console.log("random numbIndex value " + numbChar[numbNum]);
-  //     pass += numbChar[numbNum];
-  
-      
-  // }
-
-
-
-
-
-      // 1st draft of creating random password
-      // var pass = '';
-      // for (i = 0; i < userLength; i++) {
-      //   if (inclSpec) {
-      //     var specNum = Math.floor(Math.random() * specChar.length) + 1;
-      //       console.log("random index value " + specChar[specNum]);
-      //     pass += specChar[specNum]
-      //     console.log(pass)   
-      // }
-    
-
-
-  // }
-
-
-  //Math.floor(Math.random() * (max - min)) + min
-
-
-
-
-
-  return pass
-}
-
-
-console.log("generatePassword is runing");
-
-
-
-
 
 // Write password to the #password input
 function writePassword() {
-  console.log("writePassword is running")
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
-
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
