@@ -6,11 +6,11 @@
 
 // * Declare Global Variables
   var generateBtn = document.querySelector("#generate");
-  // Declare blank, dynamic string that will be populated by user choices
+  // ** Declare blank, dynamic string that will be populated by user choices
   var userChar = '';
-  // Declare var to track if user has selected enough choices
+  // ** Declare var to track if user has selected enough choices
   var reqCharCount = 0;
-  // Declare var to be used to generate and display password
+  // ** Declare var to be used to generate and display password
   var pass = '';
 
 // * Run All Logic To Generate Password When User Clicks Button
@@ -28,8 +28,7 @@
     // ** Conditional to check if length is correct and if they typed a letter
       if (userLength < 8 || userLength > 128 || isNaN(userLength)) {
         alert("You must choose a number between 8 - 128. Please try again.");
-        pass = 'Click \'Generate Password\' below to get started!';
-        return pass;
+        return '';
     // ** If Correct, Get Conditions From User
     } else if (userLength >= 8 && userLength <= 128) {
     // ** Display Rules To User
@@ -81,8 +80,7 @@
   // ** This Conditional Will Check If User Selected Enough Character Types
     if (reqCharCount < 2) {
       alert("You must choose at least two character types. Please try again.");
-      pass = 'Click \'Generate Password\' below to get started!';
-      return pass;
+      return '';
     } else {
   // ** If User Has Selected All Apporpriate Prompts, Generate Password
           // console.log('---Function to genarate random password---');  //pg break
