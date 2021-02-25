@@ -8,7 +8,7 @@ As with any mere mortal, JavaScript send chills down my spine. I have never work
 - Maintain accessibility standards, including using proper semantic HTML
 
 
-![Random Password Generator](./assets/images/readme-01.png)
+![Random Password Generator](./assets/images/readme-02.png)
 [Random Password Generator](https://diegopie.github.io/password-generator/) is hosted on GitHub pages.
 
 ## Outcome
