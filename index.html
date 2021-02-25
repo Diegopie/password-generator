@@ -22,29 +22,34 @@
                     character types you would like to include in your password.</p>
             </article>
             <article>
+                <!-- Length -->
                 <div>
                     <p>Choose a Password Length</p>
                     <select id="length">
                         <option selected >8</option>
                     </select>
                 </div>
+                <!-- Special -->
                 <div class='spacing'>
-                    <label id='spec' for='special'>Would You Like to Include Special Characters?</label>
+                    <label id='spec' for='special'>Would you like to include Special Characters?&nbsp&nbsp</label>
                     <input name='special' id="specTrue" value=true type='radio'>Yes
                     <input name='special' id="specFalse" value=false type='radio' checked>No
                 </div>
+                <!-- Number -->
                 <div class='spacing'>
-                    <label for='number'>Would you like to include Numbers?</label>
+                    <label for='number'>Would you like to include Numbers?&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                     <input name='number' id="numbTrue" value=true type='radio'>Yes
                     <input name='number' id="numbFalse" value=false type='radio' checked>No
                 </div>
+                <!-- Lower -->
                 <div class='spacing'>
-                    <label for='lower'>Would you like to include Lower-case letters?</label>
+                    <label for='lower'>Would you like to include Lower-case letters?&nbsp&nbsp&nbsp</label>
                     <input name='lower' id="lowTrue" value=true type='radio'>Yes
                     <input name='lower' id="lowFalse" value=false type='radio' checked>No
                 </div>
+                <!-- Upper -->
                 <div class='spacing'>
-                    <label for='upper'>Would you like to include Upper-case letters?</label>
+                    <label for='upper'>Would you like to include Upper-case letters?&nbsp&nbsp&nbsp</label>
                     <input name='upper' id="upTrue" value=true type='radio'>Yes
                     <input name='upper' id="upFalse" value=false type='radio' checked>No
                 </div>
@@ -56,6 +61,9 @@
             <article class="card-footer">
                 <button id="generate" class="btn">Generate Password</button>
                 <button id="copy" class="btn">Copy Password</button>
+            </article>
+            <article class="card-header">
+                <p id='alert'></p>
             </article>
         </section>
     </main>
