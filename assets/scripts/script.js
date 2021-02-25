@@ -119,3 +119,4 @@
   }
   // ** Add Event Listner To Trigger Copy Text To Clipboard
     document.querySelector('#copy').addEventListener('click', copy);
+    
