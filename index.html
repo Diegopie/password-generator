@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel='icon' href="./assets/images/icon-text.png">
     <title>Random Password Generator - Customize a Secure Password</title>
     <link rel="stylesheet" href="assets/styles/style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
         <h1>Random Password Generator</h1>
     </header>
     <main class="wrapper">
-      <section class="card">
-        <article class="card-header">
-          <h2>Generate a Password</h2>
-          <p>This utility will randomly generate a password between 8 – 128 characters. You can choose what character types you would like to include in your password.</p>
-        </article>
-        <article class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Click 'Generate Password' below to get started!"
-            aria-label="Generated Password"
-          ></textarea>
-        </article>
-        <article class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-          <button id="copy" class="btn">Copy Password</button>
-        </article>
-      </section>
+        <section class="card">
+            <article class="card-header">
+                <h2>Generate a Password</h2>
+                <p>This utility will randomly generate a password between 8 – 128 characters. You can choose what
+                    character types you would like to include in your password.</p>
+            </article>
+            <article>
+                <div>
+                    <p>Choose a Password Length</p>
+                    <select id="length">
+                        <option selected >8</option>
+                    </select>
+                </div>
+                <div class='spacing'>
+                    <label id='spec' for='special'>Would You Like to Include Special Characters?</label>
+                    <input name='special' id="specTrue" value=true type='radio'>Yes
+                    <input name='special' id="specFalse" value=false type='radio' checked>No
+                </div>
+                <div class='spacing'>
+                    <label for='number'>Would you like to include Numbers?</label>
+                    <input name='number' id="numbTrue" value=true type='radio'>Yes
+                    <input name='number' id="numbFalse" value=false type='radio' checked>No
+                </div>
+                <div class='spacing'>
+                    <label for='lower'>Would you like to include Lower-case letters?</label>
+                    <input name='lower' id="lowTrue" value=true type='radio'>Yes
+                    <input name='lower' id="lowFalse" value=false type='radio' checked>No
+                </div>
+                <div class='spacing'>
+                    <label for='upper'>Would you like to include Upper-case letters?</label>
+                    <input name='upper' id="upTrue" value=true type='radio'>Yes
+                    <input name='upper' id="upFalse" value=false type='radio' checked>No
+                </div>
+            </article>
+            <article class="card-body">
+                <textarea readonly id="password" placeholder="Click 'Generate Password' below to get started!"
+                    aria-label="Generated Password"></textarea>
+            </article>
+            <article class="card-footer">
+                <button id="generate" class="btn">Generate Password</button>
+                <button id="copy" class="btn">Copy Password</button>
+            </article>
+        </section>
     </main>
     <script src="assets/scripts/script.js"></script>
-  </body>
+</body>
+
 </html>

@@ -8,7 +8,7 @@ As with any mere mortal, JavaScript send chills down my spine. I have never work
 - Utilize Bootstrap systems to create a responsive application
 - Use a navbar that links to all pages and creates consistency on each page
 - Maintain accessibility standards, including using proper semantic HTML
-- Express my personality and link to external online profiles
+
 
 ![Random Password Generator](./assets/images/readme-01.png)
 [Random Password Generator](https://diegopie.github.io/password-generator/) is hosted on GitHub pages. 
